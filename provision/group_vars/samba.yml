@@ -1,0 +1,10 @@
+samba_users:
+  - name: vagrant
+    password: vagrant
+samba_shares:
+  - name: vagrant
+    comment: 'For samba share of volume app_deploys'
+    path: /home/vagrant
+    read_only: no
+    write_list: vagrant
+    group: vagrant

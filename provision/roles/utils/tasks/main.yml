@@ -1,0 +1,71 @@
+---
+
+# Installation des packages principaux
+- name: Install utility packages common to all hosts
+  become: true
+  apt:
+    name:
+      - vim
+      - htop
+      - git
+      - net-tools
+      - curl
+      - tree
+      - apache2-utils
+      - resolvconf
+      - tmux
+      - fonts-powerline
+      - powerline
+    state: present
+    autoclean: yes
+
+- name: Change .zshrc file owner
+  become: true
+  file:
+    path: /home/vagrant/.zshrc
+    owner: vagrant
+    group: vagrant
+
+- name: Copy global config files to vagrant user
+  copy: src=/vagrant/config/global/ dest=/home/vagrant/
+
+- name: Copy global config files to root user
+  become: true
+  copy: src=/vagrant/config/global/ dest=/root/
+
+- name: Clone zsh-autosuggestions plugin
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions.git
+    dest: /home/vagrant/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+
+- name: Clone tmuxifier repo
+  git:
+    repo: https://github.com/jimeh/tmuxifier.git
+    dest: /home/vagrant/.tmuxifier
+
+- name: Add excute mode to init bash script
+  become: true
+  file:
+    path: /vagrant/config/scripts/init.sh
+    mode: "u+x,g+x,o+x"
+
+- name: Run docker containers
+  script: /vagrant/config/scripts/init.sh
+
+- name: Add tmuxifier to PATH env
+  lineinfile:
+    path: /home/vagrant/.zshrc
+    line: 'export PATH="$HOME/.tmuxifier/bin:$PATH"'
+
+- name: init tmuxifier
+  lineinfile:
+    path: /home/vagrant/.zshrc
+    line: 'eval "$(tmuxifier init -)"'
+
+- name: Add .bash_aliases to .zshrc
+  blockinfile:
+    path: /home/vagrant/.zshrc
+    block: |
+        if [ -f ~/.bash_aliases ]; then
+        . ~/.bash_aliases
+        fi

@@ -1,0 +1,3 @@
+docker__registries:
+  - registry_url: "https://registry.docker.com/"
+docker__users: ["vagrant"]

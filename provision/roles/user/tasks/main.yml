@@ -1,0 +1,15 @@
+---
+- name: Create user
+  when: user is defined
+  become: yes
+  user: name={{ user }}
+
+- name: Add user ssh key
+  when: user is defined
+  become: yes
+  authorized_key: user={{ user }} key="{{ lookup('file', '~/.ssh/id_rsa_ansible.pub')}}"
+
+- name: "{{ user }} becomes sudoers"
+  become: yes
+  template: src=templates/sudoers.j2 dest=/etc/sudoers.d/{{ user }}-sudoer validate="visudo -cf %s"
+...

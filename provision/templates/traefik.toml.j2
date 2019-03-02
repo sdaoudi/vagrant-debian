@@ -1,0 +1,32 @@
+logLevel = "INFO"
+defaultEntryPoints = ["http"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+
+  [entryPoints.traefik]
+  address = ":8083"
+
+[docker]
+  endpoint = "unix:///var/run/docker.sock"
+  domain = "local"
+  watch = true
+
+[api]
+  entryPoint = "traefik"
+  dashboard = true
+  debug = true
+
+[file]
+[frontends]
+  [frontends.frontend1]
+  backend = "backend1"
+    [frontends.frontend1.routes.test_1]
+    rule = "Host: traefik.local"
+
+[backends]
+
+  [backends.backend1]
+    [backends.backend1.servers.server1]
+    url = "http://127.0.0.1:8083"

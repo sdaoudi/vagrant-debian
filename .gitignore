@@ -1,0 +1,9 @@
+.vagrant
+
+playbook.retry
+
+provision/roles/bertvv.samba
+provision/roles/geerlingguy.ruby
+provision/roles/jebovic.ohmyzsh
+provision/roles/kibatic.traefik
+provision/roles/nickjj.docker
