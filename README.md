@@ -43,6 +43,10 @@ That's all.
 	- Username: vagrant
 	- Password: vagrant
 
+- MariaDB Database Access:
+	- Username: root
+	- Password: pouf
+
 - SSH Access:
 
 ```
