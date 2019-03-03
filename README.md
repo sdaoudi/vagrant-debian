@@ -9,10 +9,10 @@
 - Clone the repo:
 
 ```
-$ git clone git@git.intramundi.com:douadis/vagrant-docker.git
+$ git clone https://github.com/sdaoudi/vagrant-debian.git
 ```
 
-- Install Vagrant Proxy Plugin
+- Install Vagrant Proxy Plugin, if you have a proxy
 
 ```
 $ vagrant plugin install vagrant-proxyconf
