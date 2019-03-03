@@ -11,6 +11,7 @@ Vagrant.configure("2") do |config|
     v.customize ["modifyvm", :id, "--usb", "off"]
     v.customize ["modifyvm", :id, "--usbehci", "off"]
     v.customize ["modifyvm", :id, "--vrde", "off"]
+    v.customize ['modifyvm', :id, '--natnet1', '192.168.222.0/24']
   end
 
   config.vm.define "vmdocker" do |v|
@@ -32,10 +33,10 @@ Vagrant.configure("2") do |config|
   #  apt update
   #SHELL
   config.vm.provision "shell" do |s|
-	ssh_pub_key = File.readlines("#{Dir.home}/.ssh/id_rsa.pub").first.strip
-	s.inline = <<-SHELL
-  	echo #{ssh_pub_key} >> /home/vagrant/.ssh/authorized_keys
-	SHELL
+  	ssh_pub_key = File.readlines("#{Dir.home}/.ssh/id_rsa.pub").first.strip
+  	s.inline = <<-SHELL
+    	echo #{ssh_pub_key} >> /home/vagrant/.ssh/authorized_keys
+  	SHELL
   end
 
   ####### Provision #######
