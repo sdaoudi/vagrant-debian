@@ -1,7 +1,7 @@
 ---
 - src: geerlingguy.ruby
 - src: jebovic.ohmyzsh
-- src: kibatic.traefik
+#- src: kibatic.traefik
 - src: bertvv.samba
 - src: geerlingguy.nodejs
 - src: nickjj.docker

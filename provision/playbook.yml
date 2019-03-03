@@ -6,14 +6,14 @@
     - group_vars/ohmyzsh.yml
     - group_vars/samba.yml
     - group_vars/docker.yml
-    - group_vars/traefik.yml
+#    - group_vars/traefik.yml
     - group_vars/nodejs.yml
   gather_facts: yes
   roles:
     - { role: geerlingguy.ruby, become: yes }
     - { role: jebovic.ohmyzsh, become: yes }
     - { role: bertvv.samba, become: yes }
-    - { role: kibatic.traefik, become: yes }
-    - { role: geerlingguy.nodejs, become: yes }
     - { role: nickjj.docker, become: yes }
+#    - { role: kibatic.traefik, become: yes }
+    - { role: geerlingguy.nodejs, become: yes }
     - { role: utils }
