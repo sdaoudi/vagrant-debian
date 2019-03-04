@@ -9,6 +9,7 @@ docker run -d \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v /vagrant/config/traefik/traefik.toml:/traefik.toml \
   -p 80:80 \
+	--restart always \
   -l traefik.frontend.rule=Host:traefik.local \
   -l traefik.port=8181 \
   --network bridge \
