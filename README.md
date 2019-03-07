@@ -43,10 +43,6 @@ That's all.
 	- Username: vagrant
 	- Password: vagrant
 
-- MariaDB Database Access:
-	- Username: root
-	- Password: pouf
-
 - SSH Access:
 
 ```
@@ -59,12 +55,21 @@ You can also use the ssh command line:
 $ ssh vagrant@192.168.10.10
 ```
 
-# Docker container services
+# AWESOME DOCKER CONTAINERS
 
-You can access to docker container list from ``http://traefik.local``:
+If you want to initialize some containers, we offer you a list of awesome containers:
 
-Add this line to your local etc/hosts file:
+- MariaDB database:
+  - port: 3306
+  - username: root
+  - password: pouf
+- phpMyAdmin
+- Traefik:
+  - network: bridge
+- portainer
 
-```
-127.0.0.1 traefik.local
-```
+To get this list, you have to execute this command in your new VM:
+
+``
+$ bash /vagrant/config/scripts/init.sh
+``

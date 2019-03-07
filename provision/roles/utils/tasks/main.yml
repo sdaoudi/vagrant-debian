@@ -33,11 +33,6 @@
   become: true
   copy: src=/vagrant/config/global/ dest=/root/
 
-- name: Clone zsh-autosuggestions plugin
-  git:
-    repo: https://github.com/zsh-users/zsh-autosuggestions.git
-    dest: /home/vagrant/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-
 - name: Clone tmuxifier repo
   git:
     repo: https://github.com/jimeh/tmuxifier.git
@@ -48,9 +43,6 @@
   file:
     path: /vagrant/config/scripts/init.sh
     mode: "u+x,g+x,o+x"
-
-- name: Run docker containers
-  script: /vagrant/config/scripts/init.sh
 
 - name: Add tmuxifier to PATH env
   lineinfile:
