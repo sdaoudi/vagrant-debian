@@ -24,6 +24,12 @@ $ vagrant plugin install vagrant-proxyconf
 $ vagrant plugin install vagrant-disksize
 ```
 
+- Install Vagrant Timezone plugin, if you want to customise your virtual machine timezone
+
+``
+vagrant plugin install vagrant-timezone
+``
+
 - Start Vagrant
 
 ```
