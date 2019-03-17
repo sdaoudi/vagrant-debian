@@ -11,7 +11,6 @@ Vagrant.configure("2") do |config|
     v.customize ["modifyvm", :id, "--usb", "off"]
     v.customize ["modifyvm", :id, "--usbehci", "off"]
     v.customize ["modifyvm", :id, "--vrde", "off"]
-    v.customize ['modifyvm', :id, '--natnet1', '192.168.222.0/24']
   end
 
   if Vagrant.has_plugin?("vagrant-timezone")
