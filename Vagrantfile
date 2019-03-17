@@ -14,6 +14,10 @@ Vagrant.configure("2") do |config|
     v.customize ['modifyvm', :id, '--natnet1', '192.168.222.0/24']
   end
 
+  if Vagrant.has_plugin?("vagrant-timezone")
+    config.timezone.value = "Europe/Paris"
+  end
+
   config.vm.define "vmdocker" do |v|
     v.vm.box = "debian/stretch64"
 
